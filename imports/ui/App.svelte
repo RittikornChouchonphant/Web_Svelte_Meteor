@@ -1,22 +1,47 @@
 <script>
-  let counter = 0;
-  const addToCounter = () => {
-    counter += 1;
+  import {
+    Alert,
+    Button,
+    Card,
+    CardBody,
+    CardHeader,
+    CardText,
+    CardTitle,
+  } from "sveltestrap";
+  import { Form, FormGroup, Input, Label } from "sveltestrap";
+  import Navbar from "./CustomNav.svelte";
+  import "bootstrap/dist/css/bootstrap.min.css";
+
+  let click = 0;
+
+  function handleClick() {
+    click = click + 1;
   }
 </script>
 
-
-<div class="container">
-  <h1>Welcome to Meteor!</h1>
-
-  <button on:click={addToCounter}>Click Me</button>
-  <p>You've pressed the button {counter} times.</p>
-
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://svelte-tutorial.meteor.com/" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
-</div>
+<main>
+  <Navbar />
+  <Form class="m-3">
+    <FormGroup>
+      <Label for="exampleDate">Date</Label>
+      <Input
+        type="date"
+        name="date"
+        id="exampleDate"
+        placeholder="date placeholder"
+      />
+    </FormGroup>
+  </Form>
+  <Card class="m-3">
+    <CardHeader>
+      <CardTitle>ผู้ติดเชื้อ</CardTitle>
+    </CardHeader>
+    <CardBody>
+      <CardText>19,548 คน</CardText>
+    </CardBody>
+  </Card>
+  <Button color="primary" on:click={handleClick} class="m-3">Click Me</Button>
+  <Alert color="info" dismissible class="m-3"
+    >You have clicked {click} times!</Alert
+  >
+</main>
