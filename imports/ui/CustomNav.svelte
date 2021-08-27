@@ -19,10 +19,12 @@
     function handleUpdate(event) {
         isOpen = event.detail.isOpen;
     }
+
+    const logout = () => Meteor.logout();
 </script>
 
 <Navbar color="dark" dark expand="md">
-    <NavbarBrand href="/">sveltestrap</NavbarBrand>
+    <NavbarBrand href="/">KAHOOT</NavbarBrand>
     <NavbarToggler on:click={() => (isOpen = !isOpen)} />
     <Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
         <Nav class="ms-auto" navbar>
@@ -44,7 +46,7 @@
                 </DropdownMenu>
             </Dropdown>
             <NavItem>
-                <NavLink href="https://twitter.com">
+                <NavLink href="" on:click={logout}>
                     <!-- svelte-ignore a11y-missing-attribute -->
                     <img
                         src="https://cdn.discordapp.com/attachments/731849212274147339/852903842063974430/Celica.jpg"

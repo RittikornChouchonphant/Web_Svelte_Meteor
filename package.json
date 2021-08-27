@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.14.8",
+    "bcrypt": "^5.0.1",
     "bootstrap": "^5.1.0",
+    "meteor": "^2.3.5",
     "meteor-node-stubs": "^1.1.0",
     "svelte": "^3.42.1",
     "svelte-toasts": "^1.1.2",
