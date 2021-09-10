@@ -1,21 +1,37 @@
 <script>
-  import {
-    Alert,
-    Button,
-    Card,
-    CardBody,
-    CardHeader,
-    CardText,
-    CardTitle,
-  } from "sveltestrap";
-  import { Form, FormGroup, Input, Label } from "sveltestrap";
+  import { Card } from "sveltestrap";
   import Navbar from "./CustomNav.svelte";
   import { Collection } from "../api/Collection";
   import QuestionForm from "./QuestionForm.svelte";
   import "bootstrap/dist/css/bootstrap.min.css";
   import LoginForm from "./LoginForm.svelte";
+  import { onMount } from "svelte";
+  import Chart from "chart.js";
 
-  let click = 0;
+  onMount(async () => {});
+
+  function renderChart() {
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        lebels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        datasets: [
+          {
+            label: "Dummy",
+            backgroundColor: "rgb(255, 99, 132)",
+            borderColor: "rgb(255, 99, 132)",
+            data: [2, 5, 1, 6, 7, 8],
+          },
+        ],
+      },
+      options: {
+        responsive: true, 
+        maintainAspectRatio: false
+      },
+    });
+  }
+
   let user = null;
   let questions = [];
 
@@ -25,41 +41,14 @@
       ? Collection.find({}, { sort: { createdAt: -1 } }).fetch()
       : [];
   }
-
-  function handleClick() {
-    click = click + 1;
-  }
 </script>
 
 <main>
   {#if user}
     <Navbar />
-    <Form class="m-3">
-      <FormGroup>
-        <Label for="exampleDate">Date</Label>
-        <Input
-          type="date"
-          name="date"
-          id="exampleDate"
-          placeholder="date placeholder"
-        />
-      </FormGroup>
-    </Form>
-    <Card class="m-3">
-      <CardHeader>
-        <CardTitle>Name of quiz taker</CardTitle>
-      </CardHeader>
-      <CardBody>
-        <CardText>Loading...</CardText>
-      </CardBody>
-    </Card>
-    <Button color="" on:click={handleClick} class="m-3 btn-outline-primary"
-      >Click Me</Button
-    >
-    <Alert color="info" dismissible class="m-3"
-      >You have clicked {click} times!</Alert
-    >
     <div class="container">
+      <button on:click={renderChart}> View Graph </button>
+      <canvas id="myChart" width="40vw"></canvas>
       <QuestionForm />
       <ul class="mt-3">
         {#each questions as question (question._id)}
