@@ -1,9 +1,21 @@
 <script>
     import { Meteor } from "meteor/meteor";
     import { Col, Row } from "sveltestrap";
+
+    function swithSignup() {
+        if (document.getElementById("loginDiv").style.display === "block") {
+            document.getElementById("loginDiv").style.display = "none";
+            document.getElementById("signupDiv").style.display = "block";
+        }
+    }
+
     let code = "";
     let username = "";
     let password = "";
+
+    let email = "";
+    let fullname = "";
+    let signuppassword = "";
     const handleSubmit = () => {
         Meteor.loginWithPassword(username, password);
     };
@@ -28,9 +40,12 @@
         </div>
     </Col>
     <Col>
-        <div style="padding-top: 20%; margin-right:10%">
+        <div
+            id="loginDiv"
+            style="padding-top: 20%; margin-right:10%; display:block;"
+        >
             <h1
-                style="font-family: Rockwell; color: #736AEF; font-size:2.5em; text-align: center;"
+                style="font-family: Rockwell; color: #736AEF; font-size:2.95em; text-align: center;"
             >
                 Just taking a quiz?
             </h1>
@@ -44,7 +59,7 @@
                 />
             </form>
             <h1
-                style="font-family: Rockwell; color: #736AEF; font-size:2.5em; text-align: center;"
+                style="font-family: Rockwell; color: #736AEF; font-size:2.45em; text-align: center;"
             >
                 Want to create a quiz?
             </h1>
@@ -66,7 +81,56 @@
                     style="margin-top: 40px;"
                 />
                 <button type="submit" style="margin: 40px;">Log In</button>
-                <button type="button" style="margin: 40px;">Sign Up</button>
+                <button
+                    type="button"
+                    style="margin: 40px;"
+                    on:click={swithSignup}>Sign Up</button
+                >
+            </form>
+        </div>
+        <div
+            id="signupDiv"
+            style="padding-top: 20%; margin-right:10%; display: none;"
+        >
+            <h1
+                style="font-family: Rockwell; color: #736AEF; font-size:2.25em; text-align: center;"
+            >
+                Join the styles,<br />goodbye to boring quiz
+            </h1>
+            <form>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    bind:value={email}
+                    style="margin-top: 25px; margin-bottom: 35px"
+                />
+                <input
+                    type="text"
+                    placeholder="Full name"
+                    name="fullname"
+                    bind:value={fullname}
+                    style="margin-bottom: 35px"
+                />
+                <input
+                    type="text"
+                    placeholder="Password"
+                    name="signuppassword"
+                    bind:value={signuppassword}
+                    style="margin-bottom: 35px"
+                />
+                <input type="checkbox" id="agree" name="agree" value="agree" />
+                <label for="agree" style="font-family: Arial; text-align:left;"
+                    >By signing up, you agree to our Terms, Data Policy <br
+                    />and Cookies Policy.</label
+                >
+            </form>
+            <form on:submit|preventDefault={handleSubmit}>
+                <button
+                    type="button"
+                    style="margin: 40px;"
+                    on:click={swithSignup}>Sign Up</button
+                >
             </form>
         </div>
     </Col>
