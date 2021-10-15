@@ -25,12 +25,12 @@
     <Col>
         <div class="pt-5" style="background-color: #736AEF; height: 93vh;">
             <h1
-                style="font-family: Rockwell; color: #ffffff; font-size:3.8em; font-weight: 600; text-align: center;"
+                style="font-family: Rockwell; color: #ffffff; font-size:3vw; font-weight: 600; text-align: center;"
             >
                 Eliminate platitudinous quiz <br /> with your creativity!
             </h1>
             <p
-                style="margin-top: 7%; margin-right: 18%; font-family: Gotham; font-size:2em; color: #ffffff; text-align: right;"
+                style="margin-top: 7%; margin-right: 18%; font-family: Gotham; font-size:1.6vw; color: #ffffff; text-align: right;"
             >
                 No login required to take quiz <br /> <br />
                 Custom Power Point style quiz <br /> <br />
@@ -45,7 +45,7 @@
             style="padding-top: 20%; margin-right:10%; display:block;"
         >
             <h1
-                style="font-family: Rockwell; color: #736AEF; font-size:2.95em; text-align: center;"
+                style="font-family: Rockwell; color: #736AEF; font-size:2.3vw; text-align: center;"
             >
                 Just taking a quiz?
             </h1>
@@ -55,7 +55,7 @@
                     placeholder="Paste your quiz code here"
                     name="code"
                     bind:value={code}
-                    style="margin-top: 25px; margin-bottom: 90px"
+                    style="margin-top: 25px; margin-bottom: 90px;"
                 />
             </form>
             <h1
@@ -78,12 +78,16 @@
                     name="password"
                     required
                     bind:value={password}
-                    style="margin-top: 40px;"
+                    style="margin-top: 40px; "
                 />
-                <button type="submit" style="margin: 40px;">Log In</button>
+                <button
+                    type="submit"
+                    style="margin-right: 0.65vw; margin-top: 50px;"
+                    >Log In</button
+                >
                 <button
                     type="button"
-                    style="margin: 40px;"
+                    style="margin-left: 0.65vw; margin-top: 50px;"
                     on:click={swithSignup}>Sign Up</button
                 >
             </form>
@@ -92,17 +96,20 @@
             id="signupDiv"
             style="padding-top: 20%; margin-right:10%; display: none;"
         >
-            <h1
-                style="font-family: Rockwell; color: #736AEF; font-size:2.25em; text-align: center;"
-            >
-                Join the styles,<br />goodbye to boring quiz
-            </h1>
+            <div style="display: flex; justify-content: center;">
+                <h1
+                    style="font-family: Rockwell; color: #736AEF; font-size:1.8vw; text-align: left;"
+                >
+                    Join the styles,<br />goodbye to boring quiz
+                </h1>
+            </div>
             <form>
                 <input
                     type="email"
                     placeholder="Email"
                     name="email"
                     bind:value={email}
+                    required
                     style="margin-top: 25px; margin-bottom: 35px"
                 />
                 <input
@@ -110,6 +117,7 @@
                     placeholder="Full name"
                     name="fullname"
                     bind:value={fullname}
+                    required
                     style="margin-bottom: 35px"
                 />
                 <input
@@ -117,13 +125,26 @@
                     placeholder="Password"
                     name="signuppassword"
                     bind:value={signuppassword}
+                    required
                     style="margin-bottom: 35px"
                 />
-                <input type="checkbox" id="agree" name="agree" value="agree" />
-                <label for="agree" style="font-family: Arial; text-align:left;"
-                    >By signing up, you agree to our Terms, Data Policy <br
-                    />and Cookies Policy.</label
+                <div
+                    style="display: flex; align-items: flex-start; width: 19vw; margin-left: auto; margin-right: auto;"
                 >
+                    <input
+                        type="checkbox"
+                        id="agree"
+                        name="agree"
+                        value="agree"
+                        class="checkbox"
+                    />
+                    <label
+                        for="agree"
+                        style="font-family: Arial; text-align:left; font-size: 0.77vw; margin-top: -12px;"
+                        >By signing up, you agree to our Terms, Data Policy <br
+                        />and Cookies Policy.</label
+                    >
+                </div>
             </form>
             <form on:submit|preventDefault={handleSubmit}>
                 <button
@@ -150,9 +171,9 @@
         border: 1px solid #a655e4;
         border-radius: 21px;
         background: none;
-        padding: 7px 46px 10px 46px;
+        padding: 7px 3vw 10px 3vw;
         color: #a655e4;
-        font-size: 1.2rem;
+        font-size: 0.9vw;
     }
 
     button:hover {
@@ -168,9 +189,17 @@
         border: 1px solid rgb(199, 199, 199);
         border-radius: 6px;
         background: none;
-        font-size: 1.2rem;
+        font-size: 0.9vw;
         padding: 6px 0px 9px 14px;
         color: #7c7c7c;
+    }
+
+    .checkbox {
+        margin: 0px;
+        margin-right: 1vw;
+        display: inline;
+        top: 0%;
+        width: auto;
     }
 
     br {
