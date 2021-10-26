@@ -11,7 +11,6 @@
         DropdownToggle,
         DropdownMenu,
         DropdownItem,
-        Image,
     } from "sveltestrap";
 
     let isOpen = true;
@@ -24,7 +23,7 @@
 </script>
 
 <Navbar color="dark" dark expand="md">
-    <NavbarBrand href="/">KAHOOT</NavbarBrand>
+    <NavbarBrand href="/">RASKIT</NavbarBrand>
     <NavbarToggler on:click={() => (isOpen = !isOpen)} />
     <Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
         <Nav class="ms-auto" navbar>

@@ -1,11 +1,11 @@
 <script>
-  import { Card } from "sveltestrap";
   import Navbar from "./CustomNav.svelte";
   import { Collection } from "../api/Collection";
   import QuestionForm from "./QuestionForm.svelte";
   import "bootstrap/dist/css/bootstrap.min.css";
   import LoginForm from "./LoginForm.svelte";
   import { onMount } from "svelte";
+  import CustomNav from "./CustomNav.svelte";
 
   onMount(async () => {});
 
@@ -21,5 +21,10 @@
 </script>
 
 <main>
-  <LoginForm />
+  {#if user}
+    <CustomNav />
+    <QuestionForm />
+  {:else}
+    <LoginForm />
+  {/if}
 </main>
