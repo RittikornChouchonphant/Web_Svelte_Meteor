@@ -1,6 +1,5 @@
 <script>
     import { Meteor } from "meteor/meteor";
-    import { Col, Row } from "sveltestrap";
 
     function swithSignup() {
         if (document.getElementById("loginDiv").style.display === "block") {
@@ -16,13 +15,14 @@
     let email = "";
     let fullname = "";
     let signuppassword = "";
-    const handleSubmit = () => {
+
+    function handleSubmit() {
         Meteor.loginWithPassword(username, password);
-    };
+    }
 </script>
 
-<Row>
-    <Col>
+<div class="row">
+    <div class="col">
         <div class="pt-5" style="background-color: #736AEF; height: 93vh;">
             <h1
                 style="font-family: Rockwell; color: #ffffff; font-size:3vw; font-weight: 600; text-align: center;"
@@ -38,8 +38,8 @@
                 Tons of features to control <br /> sleepy students!
             </p>
         </div>
-    </Col>
-    <Col>
+    </div>
+    <div class="col">
         <div
             id="loginDiv"
             style="padding-top: 20%; margin-right:10%; display:block;"
@@ -63,11 +63,10 @@
             >
                 Want to create a quiz?
             </h1>
-            <form on:submit|preventDefault={handleSubmit}>
+            <form>
                 <input
                     type="text"
                     placeholder="Username"
-                    name="username"
                     required
                     bind:value={username}
                     style="margin-top: 25px;"
@@ -75,13 +74,12 @@
                 <input
                     type="password"
                     placeholder="Password"
-                    name="password"
                     required
                     bind:value={password}
-                    style="margin-top: 40px; "
+                    style="margin-top: 40px;"
                 />
                 <button
-                    type="submit"
+                    on:click|preventDefault={handleSubmit}
                     style="margin-right: 0.65vw; margin-top: 50px;"
                     >Log In</button
                 >
@@ -146,16 +144,12 @@
                     >
                 </div>
             </form>
-            <form on:submit|preventDefault={handleSubmit}>
-                <button
-                    type="button"
-                    style="margin: 40px;"
-                    on:click={swithSignup}>Sign Up</button
-                >
+            <form>
+                <button type="button" style="margin: 40px;">Sign Up</button>
             </form>
         </div>
-    </Col>
-</Row>
+    </div>
+</div>
 
 <style>
     @font-face {
