@@ -3,6 +3,7 @@ import App from '../imports/ui/App.svelte';
 
 Meteor.startup(() => {
   new App({
-    target: document.getElementById('app')
+    target: document.getElementById('app'),
+    hydratable: true
   });
 });

@@ -1,7 +1,6 @@
 <script>
-  import Navbar from "./CustomNav.svelte";
   import { Collection } from "../api/Collection";
-  import QuestionForm from "./QuestionForm.svelte";
+  import Console from "./Console.svelte";
   import "bootstrap/dist/css/bootstrap.min.css";
   import LoginForm from "./LoginForm.svelte";
   import { onMount } from "svelte";
@@ -23,7 +22,7 @@
 <main>
   {#if user}
     <CustomNav />
-    <QuestionForm />
+    <Console />
   {:else}
     <LoginForm />
   {/if}
