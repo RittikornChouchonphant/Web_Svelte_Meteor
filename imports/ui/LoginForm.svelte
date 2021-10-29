@@ -154,7 +154,7 @@
 <style>
     @font-face {
         font-family: "Gotham";
-        src: local("Gotham Bold"), local("Gotham-Bold");
+        src: url(/fonts/gotham-bold.woff2) format("woff2");
     }
 
     form {
