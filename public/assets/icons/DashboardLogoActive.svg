@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #8d89ee;
+      }
+    </style>
+  </defs>
+  <g id="Dashboard_Logo" data-name="Dashboard Logo" transform="translate(-37 -207)">
+    <rect id="Rectangle_5" data-name="Rectangle 5" class="cls-1" width="11" height="14" rx="1" transform="translate(50 207)"/>
+    <rect id="Rectangle_7" data-name="Rectangle 7" class="cls-1" width="11" height="14" rx="1" transform="translate(37 216)"/>
+    <rect id="Rectangle_6" data-name="Rectangle 6" class="cls-1" width="11" height="7" rx="1" transform="translate(50 223)"/>
+    <rect id="Rectangle_8" data-name="Rectangle 8" class="cls-1" width="11" height="7" rx="1" transform="translate(37 207)"/>
+  </g>
+</svg>
