@@ -1,7 +1,7 @@
 <script>
     import { Router, links, Route } from "svelte-routing";
     import Menu from "./Menu.svelte";
-    import Profile from "./Profile.svelte";
+    import CreateQuizMaster from "./CreateQuizMaster.svelte";
 </script>
 
 <div use:links class="masterpage">
@@ -21,7 +21,7 @@
         </div>
         <div class="mastercontent">
             <Route path="menu" component={Menu} />
-            <Route path="createquiz" component={Profile} />
+            <Route path="createquiz" component={CreateQuizMaster} />
         </div>
     </Router>
 </div>

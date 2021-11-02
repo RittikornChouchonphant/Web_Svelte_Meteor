@@ -8,25 +8,13 @@ Powered by Meteor and Svelte framework.
 
 - Auto generated quiz with modern design
 - User-friendly user interface
-- Intense quiz than every with Raskit platform
+- Would you rather mode packed with intense choices!
 
 ## Features
 
-- Make powerpoint-like quiz with advanced mode
+- Would you rather mode and Combo mode
 - No need to login taking a quiz
-- Geoguesser mode (Coming soon...)
-
-Markdown is a lightweight markup language based on the formatting conventions
-that people naturally use in email.
-As [John Gruber] writes on the [Markdown site][df1]
-
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
+- Advanced powerpoint quiz style (Coming soon...)
 
 ## Tech
 
@@ -47,13 +35,3 @@ Install the dependencies and devDependencies and start the server.
 cd Web_Svelte_Meteor
 npm i
 ```
-
-## Plugins
-
-Dillinger is currently extended with the following plugins.
-Instructions on how to use them in your own application are linked below.
-
-| Plugin | README |
-| ------ | ------ |
-| GitHub | [plugins/github/README.md][PlGh] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |

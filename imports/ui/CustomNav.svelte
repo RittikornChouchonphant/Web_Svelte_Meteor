@@ -23,7 +23,7 @@
 </script>
 
 <Navbar color="dark" dark expand="md">
-    <NavbarBrand href="/">RASKIT</NavbarBrand>
+    <NavbarBrand href="/"><h1>RASKIT</h1></NavbarBrand>
     <NavbarToggler on:click={() => (isOpen = !isOpen)} />
     <Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
         <Nav class="ms-auto" navbar>
@@ -57,3 +57,12 @@
         </Nav>
     </Collapse>
 </Navbar>
+
+<style>
+    h1 {
+        font-family: Nunito;
+        color: #ffffff;
+        font-size: 1.5vw;
+        margin-left: 5vw;
+    }
+</style>
