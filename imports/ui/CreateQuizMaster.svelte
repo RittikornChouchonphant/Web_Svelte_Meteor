@@ -1,3 +1,16 @@
+<script>
+import { navigate } from "svelte-routing";
+
+function handleOldschoolQuiz (){
+    navigate("/OldschoolQuiz",{replace:true});
+}
+
+function handleWouldYouRather (){
+    navigate("/WouldyouRather",{replace:true});
+}
+
+</script>
+
 <div>
     <h1>Which type of quiz you want to make?</h1>
     <div class="thumbnail">
@@ -5,14 +18,14 @@
             src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
             alt="OldSchoolQuizThumbnail"
         /> <br />
-        <p>Old School Quiz</p>
+        <p on:click={handleOldschoolQuiz}>Old School Quiz</p>
     </div>
     <div class="thumbnail">
         <img
             src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
             alt="OldSchoolQuizThumbnail"
         /> <br />
-        <p>Would you rather?</p>
+        <p on:click={handleWouldYouRather}>Would you rather?</p>
     </div>
 </div>
 
