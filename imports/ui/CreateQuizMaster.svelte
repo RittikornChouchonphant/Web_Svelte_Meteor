@@ -5,7 +5,7 @@
             src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
             alt="OldSchoolQuizThumbnail"
         /> <br />
-        <p>Old School Quiz</p>
+        <p>Auto generated quiz</p>
     </div>
     <div class="thumbnail">
         <img

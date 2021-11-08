@@ -5,11 +5,14 @@
   import LoginForm from "./LoginForm.svelte";
   import { onMount } from "svelte";
   import CustomNav from "./CustomNav.svelte";
+  import QuestionForm from "./QuestionForm.svelte";
+  import { Route, Router } from "svelte-routing";
 
   onMount(async () => {});
 
   let user = null;
   let questions = [];
+  export let url = "";
 
   $m: {
     user = Meteor.user();
@@ -24,6 +27,11 @@
     <CustomNav />
     <Console />
   {:else}
-    <LoginForm />
+    <Router {url}>
+      <div>
+        <Route path="questionform" component={QuestionForm} />
+        <Route path="/"><LoginForm /></Route>
+      </div>
+    </Router>
   {/if}
 </main>
