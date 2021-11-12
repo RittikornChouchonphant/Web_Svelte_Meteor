@@ -1,4 +1,6 @@
 <script>
+    import { navigate } from "svelte-routing";
+
     import {
         Collapse,
         Navbar,
@@ -19,7 +21,10 @@
         isOpen = event.detail.isOpen;
     }
 
-    const logout = () => Meteor.logout();
+    const logout = () => {
+        Meteor.logout();
+        navigate("/", { replace: true });
+    };
 </script>
 
 <Navbar color="dark" dark expand="md">

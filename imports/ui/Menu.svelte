@@ -1,5 +1,10 @@
+<script>
+    import GoogleFormStyle from "../ui/group/GoogleFormStyle.svelte";
+</script>
+
 <div>
-    <h1>Menu</h1>
+    <h1>Main</h1>
+    <GoogleFormStyle />
 </div>
 
 <style>

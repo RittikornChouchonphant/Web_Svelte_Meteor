@@ -2,6 +2,12 @@
     import { Router, links, Route } from "svelte-routing";
     import Menu from "./Menu.svelte";
     import CreateQuizMaster from "./CreateQuizMaster.svelte";
+
+    let user = null;
+
+    $m: {
+        user = Meteor.user();
+    }
 </script>
 
 <div use:links class="masterpage">
@@ -14,7 +20,7 @@
                         alt="DashboardLogo"
                         style="margin-right: 10px;"
                     />
-                    Menu
+                    {user.username}
                 </a>
                 <a href="/createquiz" replace> Create New Quiz </a>
             </nav>

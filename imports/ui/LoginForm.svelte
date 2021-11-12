@@ -1,5 +1,6 @@
 <script>
     import { Meteor } from "meteor/meteor";
+    import { navigate } from "svelte-routing";
 
     function swithSignup() {
         if (document.getElementById("loginDiv").style.display === "block") {
@@ -18,6 +19,11 @@
 
     function handleSubmit() {
         Meteor.loginWithPassword(username, password);
+        navigate("/menu", { replace: true });
+    }
+
+    function handleSignup() {
+        navigate("/questionform", { replace: true });
     }
 </script>
 
@@ -145,7 +151,11 @@
                 </div>
             </form>
             <form>
-                <button type="button" style="margin: 40px;">Sign Up</button>
+                <button
+                    type="button"
+                    style="margin: 40px;"
+                    on:click={handleSignup}>Sign Up</button
+                >
             </form>
         </div>
     </div>
