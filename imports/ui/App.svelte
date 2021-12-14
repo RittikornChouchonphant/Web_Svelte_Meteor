@@ -11,10 +11,9 @@
 
   onMount(async () => {});
   import { Form } from "sveltestrap";
+  import Menu from "./Menu.svelte";
 
   let user = null;
-  let questions = [];
-  export let url = "";
 
   $m: {
     user = Meteor.user();
@@ -29,10 +28,6 @@
     <CustomNav />
     <Console />
   {:else}
-    <Router {url}>
-      <div>
-        <Route path="/"><LoginForm /></Route>
-      </div>
-    </Router>
+    <LoginForm />
   {/if}
 </main>

@@ -1,32 +1,48 @@
 <script>
-    import { navigate } from "svelte-routing";
+    import { navigate, Router, links, Route, Link } from "svelte-routing";
     import OldschoolQuiz from "./OldschoolQuiz.svelte";
+    import WouldYouRather from "./WouldYouRather.svelte";
 
     function handleOldschoolQuiz() {
-        navigate("/oldschool");
+        navigate("/oldschoolquiz");
     }
 
     function handleWouldYouRather() {
-        navigate("/wyr");
+        navigate("/wouldyourather");
     }
 </script>
 
 <div>
-    <h1>Which type of quiz you want to make?</h1>
-    <div class="thumbnail" on:click={handleOldschoolQuiz}>
-        <img
-            src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
-            alt="OldSchoolQuizThumbnail"
-        /> <br />
-        <p>Old School Quiz</p>
-    </div>
-    <div class="thumbnail" on:click={handleWouldYouRather}>
-        <img
-            src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
-            alt="OldSchoolQuizThumbnail"
-        /> <br />
-        <p>Would you rather?</p>
-    </div>
+    <Router>
+        <h1>Which type of quiz you want to make?</h1>
+        <div class="thumbnail" on:click={handleOldschoolQuiz}>
+            <img
+                src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
+                alt="OldSchoolQuizThumbnail"
+            /> <br />
+            <p>Old School Quiz</p>
+        </div>
+        <div class="thumbnail" on:click={handleWouldYouRather}>
+            <img
+                src="/assets/thumbnails/WouldYouRatherThumbnail.png"
+                alt="WouldYouRatherThumbnail"
+            /> <br />
+            <p>Would you rather?</p>
+        </div>
+        <div class="thumbnail">
+            <a href="/oldschoolquiz">
+                <img
+                    src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
+                    alt="OldSchoolQuizThumbnail"
+                /> <br />
+                <p>Combo</p>
+            </a>
+        </div>
+        <div>
+            <Route path="oldschoolquiz" component={OldschoolQuiz} />
+            <Route path="wouldyourather" component={WouldYouRather} />
+        </div>
+    </Router>
 </div>
 
 <style>

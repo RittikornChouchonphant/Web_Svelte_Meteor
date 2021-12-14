@@ -2,6 +2,8 @@
     import { Router, links, Route } from "svelte-routing";
     import Menu from "./Menu.svelte";
     import CreateQuizMaster from "./CreateQuizMaster.svelte";
+    import OldschoolQuiz from "./OldschoolQuiz.svelte";
+    import WouldYouRather from "./WouldYouRather.svelte";
 
     let user = null;
 
@@ -14,7 +16,7 @@
     <Router>
         <div class="sidebar">
             <nav>
-                <a href="/menu" style="margin-top: 10px;" replace>
+                <a href="/menu" style="margin-top: 10px;">
                     <img
                         src="/assets/icons/DashboardLogoActive.svg"
                         alt="DashboardLogo"
@@ -22,12 +24,14 @@
                     />
                     {user.username}
                 </a>
-                <a href="/createquiz" replace> Create New Quiz </a>
+                <a href="/createquiz"> Create New Quiz </a>
             </nav>
         </div>
         <div class="mastercontent">
             <Route path="menu" component={Menu} />
             <Route path="createquiz" component={CreateQuizMaster} />
+            <Route path="oldschoolquiz" component={OldschoolQuiz} />
+            <Route path="wouldyourather" component={WouldYouRather} />
         </div>
     </Router>
 </div>
