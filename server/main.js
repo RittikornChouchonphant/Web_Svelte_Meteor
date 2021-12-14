@@ -1,8 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Collection } from '../imports/api/Collection';
+import { Quiz } from '../imports/api/Quiz';
 
 const insertQuestion = (textQuestion, user) => Collection.insert({ text: textQuestion, userId: user._id, createdAt: new Date(), })
+const insertQuiz = (question, correctAnswer, answers) => Collection.insert({ text: textQuestion, userId: user._id, createdAt: new Date(), })
+
 
 const SEED_USERNAME = 'meteorite';
 const SEED_PASSWORD = 'password';
