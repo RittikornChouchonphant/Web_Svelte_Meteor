@@ -17,13 +17,21 @@
     let fullname = "";
     let signuppassword = "";
 
+    let user = null;
+
+    $m: {
+        user = Meteor.user();
+    }
+
     function handleSubmit() {
         Meteor.loginWithPassword(username, password);
         navigate("/menu", { replace: true });
     }
 
     function handleSignup() {
-        navigate("/questionform", { replace: true });
+        /* Meteor.call(SignUpValidator, email, fullname, signuppassword);
+        Meteor.loginWithPassword(fullname, signuppassword); */
+        navigate("/menu", { replace: true });
     }
 </script>
 
