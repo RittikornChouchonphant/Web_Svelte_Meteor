@@ -1,31 +1,31 @@
 <script>
-import { navigate } from "svelte-routing";
+    import { navigate } from "svelte-routing";
+    import OldschoolQuiz from "./OldschoolQuiz.svelte";
 
-function handleOldschoolQuiz (){
-    navigate("/OldschoolQuiz",{replace:true});
-}
+    function handleOldschoolQuiz() {
+        navigate("/oldschool");
+    }
 
-function handleWouldYouRather (){
-    navigate("/WouldyouRather",{replace:true});
-}
-
+    function handleWouldYouRather() {
+        navigate("/wyr");
+    }
 </script>
 
 <div>
     <h1>Which type of quiz you want to make?</h1>
-    <div class="thumbnail">
+    <div class="thumbnail" on:click={handleOldschoolQuiz}>
         <img
             src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
             alt="OldSchoolQuizThumbnail"
         /> <br />
-        <p on:click={handleOldschoolQuiz}>Old School Quiz</p>
+        <p>Old School Quiz</p>
     </div>
-    <div class="thumbnail">
+    <div class="thumbnail" on:click={handleWouldYouRather}>
         <img
             src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
             alt="OldSchoolQuizThumbnail"
         /> <br />
-        <p on:click={handleWouldYouRather}>Would you rather?</p>
+        <p>Would you rather?</p>
     </div>
 </div>
 
@@ -52,5 +52,9 @@ function handleWouldYouRather (){
         text-align: center;
         border: 1px solid orange;
         margin-top: 50px;
+    }
+
+    .thumbnail:hover {
+        cursor: pointer;
     }
 </style>
