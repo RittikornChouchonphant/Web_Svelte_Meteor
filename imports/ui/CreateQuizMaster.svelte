@@ -22,21 +22,21 @@
             /> <br />
             <p>Old School Quiz</p>
         </div>
-        <div class="thumbnail" on:click={handleWouldYouRather}>
-            <img
-                src="/assets/thumbnails/WouldYouRatherThumbnail.png"
-                alt="WouldYouRatherThumbnail"
-            /> <br />
-            <p>Would you rather?</p>
-        </div>
         <div class="thumbnail">
             <a href="/oldschoolquiz">
                 <img
                     src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
                     alt="OldSchoolQuizThumbnail"
                 /> <br />
-                <p>Combo</p>
+                <p>Auto generate quiz</p>
             </a>
+        </div>
+        <div class="thumbnail" on:click={handleWouldYouRather}>
+            <img
+                src="/assets/thumbnails/WouldYouRatherThumbnail.png"
+                alt="WouldYouRatherThumbnail"
+            /> <br />
+            <p>Would you rather?</p>
         </div>
         <div>
             <Route path="oldschoolquiz" component={OldschoolQuiz} />

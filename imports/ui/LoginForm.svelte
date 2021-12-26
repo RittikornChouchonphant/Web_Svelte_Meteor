@@ -1,6 +1,7 @@
 <script>
     import { Meteor } from "meteor/meteor";
     import { navigate } from "svelte-routing";
+    import { Accounts } from "meteor/accounts-base";
 
     function swithSignup() {
         if (document.getElementById("loginDiv").style.display === "block") {
@@ -29,9 +30,34 @@
     }
 
     function handleSignup() {
-        /* Meteor.call(SignUpValidator, email, fullname, signuppassword);
-        Meteor.loginWithPassword(fullname, signuppassword); */
+        var rawemail = document.getElementById("signupemail");
+        var rawfullname = document.getElementById("signupfullname");
+        var rawpassword = document.getElementById("signuppassword");
+        var email = trim(rawemail.value);
+        var fullname = trim(rawfullname.value);
+        var password = trim(rawpassword.value);
+
+        Accounts.createUser({
+            email: email,
+            username: fullname,
+            password: password,
+        });
+
         navigate("/menu", { replace: true });
+    }
+
+    function trim(str) {
+        return str.replace(/^\s+|\s+$/g, "");
+    }
+
+    function checkEmail(email) {
+        var pattern =
+            /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+        if (pattern.test(email)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 </script>
 
@@ -119,7 +145,7 @@
                 <input
                     type="email"
                     placeholder="Email"
-                    name="email"
+                    id="signupemail"
                     bind:value={email}
                     required
                     style="margin-top: 25px; margin-bottom: 35px"
@@ -127,7 +153,7 @@
                 <input
                     type="text"
                     placeholder="Full name"
-                    name="fullname"
+                    id="signupfullname"
                     bind:value={fullname}
                     required
                     style="margin-bottom: 35px"
@@ -135,7 +161,7 @@
                 <input
                     type="text"
                     placeholder="Password"
-                    name="signuppassword"
+                    id="signuppassword"
                     bind:value={signuppassword}
                     required
                     style="margin-bottom: 35px"
@@ -145,7 +171,7 @@
                 >
                     <input
                         type="checkbox"
-                        id="agree"
+                        id="signupagree"
                         name="agree"
                         value="agree"
                         class="checkbox"
