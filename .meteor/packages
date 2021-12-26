@@ -22,4 +22,5 @@ static-html@1.3.2             # Define static page content in .html files
 zodern:melte            # Meteor package to allow us to create files with the .svelte extension
 rdb:svelte-meteor-data  # Meteor package which allows us to consume Meteor's reactive data sources inside of our Svelte components
 hot-module-replacement@0.4.0  # Update client in development without reloading the page
-accounts-password@2.2.0
+accounts-base
+accounts-password

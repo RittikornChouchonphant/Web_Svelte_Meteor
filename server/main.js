@@ -37,7 +37,7 @@ Meteor.startup(() => {
       password: SEED_PASSWORD,
     });
   }
-  const user = Accounts.findUserByUsername(SEED_USERNAME);
+  const user = Accounts.findUserByUsername('Rittikorn');
   console.log(user);
   if (Collection.find().count() === 0) {
     [
