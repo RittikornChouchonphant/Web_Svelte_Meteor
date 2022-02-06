@@ -24,3 +24,5 @@ rdb:svelte-meteor-data  # Meteor package which allows us to consume Meteor's rea
 hot-module-replacement@0.4.0  # Update client in development without reloading the page
 accounts-base
 accounts-password
+cfs:standard-packages
+cfs:gridfs

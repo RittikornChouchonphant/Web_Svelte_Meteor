@@ -49,8 +49,8 @@
                 <p>CorrectChoice</p>
                 <input
                     type="number"
-                    max="3"
-                    min="0"
+                    max="4"
+                    min="1"
                     bind:value={correctAnswer}
                 />
                 <p>Choice</p>
