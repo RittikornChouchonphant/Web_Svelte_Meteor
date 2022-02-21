@@ -1,9 +1,6 @@
 <script>
     import { navigate } from "svelte-routing";
-    import { Quiz } from '../api/Quiz';
-
-    $m: Quizz = Quiz.find({}, { sort: { createdAt: -1 } }).fetch()
-
+    export let id;
     let inc = 4;
     let fileinput;
 
@@ -97,52 +94,38 @@
     }
 
     function CancelChanges() {
-        Quiz.remove({
-        });
-        navigate("/createquiz", { replace: true });
+        navigate("/menu", { replace: true });
     }
 
     function SaveChanges() {
-        // if (quiztitle == "" || quiztitle.length < 5) {
-        //     alert("Quiz title requires at least 5 characters");
-        //     return;
-        // }
-        // for (var i = 0; i < quiz.length; i++) {
-        //     if (quiz[i].c1 == "" || quiz[i].c2 == "") {
-        //         alert("choice 1 and 2 is required!");
-        //         break;
-        //     }
-        //     if (quiz[i].ques.length < 10) {
-        //         alert("question requires at least 10 characters");
-        //         break;
-        //     }
-        // }
-        // return;
-        Quiz.insert({
-                Quiz:quiz,
-                createAt:new Date(),
-        });
-        alert("Save Change");
+        if (quiztitle == "" || quiztitle.length < 5) {
+            alert("Quiz title requires at least 5 characters");
+            return;
+        }
+        for (var i = 0; i < quiz.length; i++) {
+            if (quiz[i].c1 == "" || quiz[i].c2 == "") {
+                alert("choice 1 and 2 is required!");
+                break;
+            }
+            if (quiz[i].ques.length < 10) {
+                alert("question requires at least 10 characters");
+                break;
+            }
+        }
+        return;
     }
 
     const onFileSelected = (e, i) => {
         let image = e.target.files[0];
         let reader = new FileReader();
-        if (image.size >= 1000000) {
+        if (image.size >= 100000) {
             alert("Maximum image size is 1MB");
         } else {
             reader.readAsDataURL(image);
-            reader.onload = e => {
-            for(let j = 0;j <= i ; j++){
-                quiz[j].qimg = e.target.result;
-            }
-                
-                
-            }
-            // reader.addEventListener("load", function () {
-            //     quiz[i].qimg = reader.result;
-            // });
-            // return;
+            reader.addEventListener("load", function () {
+                quiz[i].qimg = reader.result;
+            });
+            return;
         }
     };
 </script>
@@ -174,7 +157,7 @@
                                 style="display:none"
                                 type="file"
                                 accept=".jpg, .jpeg, .png"
-                                on:change={(e) => onFileSelected(e,inc)}
+                                on:change={(e) => {}}
                                 bind:this={fileinput}
                             />
                             <div class="choices">
@@ -200,7 +183,6 @@
                                         type="text"
                                         placeholder="Add answer 1"
                                         maxlength="30"
-                                        required
                                         bind:value={q.c1}
                                     />
                                 </div>
@@ -226,7 +208,6 @@
                                         type="text"
                                         placeholder="Add answer 2"
                                         maxlength="30"
-                                        required
                                         bind:value={q.c2}
                                     />
                                 </div>

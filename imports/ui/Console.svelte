@@ -4,6 +4,7 @@
     import CreateQuizMaster from "./CreateQuizMaster.svelte";
     import OldschoolQuiz from "./OldschoolQuiz.svelte";
     import WouldYouRather from "./WouldYouRather.svelte";
+    import EditOldschoolQuiz from "./EditOldschoolQuiz.svelte";
 
     let user = null;
 
@@ -30,6 +31,7 @@
         <div class="mastercontent">
             <Route path="menu" component={Menu} />
             <Route path="createquiz" component={CreateQuizMaster} />
+            <Route path="quiz/:id" component={EditOldschoolQuiz} />
             <Route path="oldschoolquiz" component={OldschoolQuiz} />
             <Route path="wouldyourather" component={WouldYouRather} />
         </div>
@@ -72,6 +74,8 @@
     .sidebar {
         height: 94vh;
         background-color: #ffffff;
+        position: sticky;
+        top: 0;
     }
 
     .masterpage {

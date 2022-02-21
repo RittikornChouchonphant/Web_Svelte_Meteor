@@ -1,52 +1,56 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { Collection } from '../imports/api/Collection';
+import { QuizDetails } from '../imports/api/QuizDetails';
 import { Quiz } from '../imports/api/Quiz';
 
-const insertQuestion = (textQuestion, user) => Collection.insert({ text: textQuestion, userId: user._id, createdAt: new Date(), })
-const insertQuiz = (question, correctAnswer, answers) => Collection.insert({ text: textQuestion, userId: user._id, createdAt: new Date(), })
+const insertQuestion = (no, obj) => { QuizDetails.insert({ No: no, Obj: obj }) }
 
-
-/* Meteor.methods({
-  SignUpValidator: function (email, username, password) {
-    const user1 = Accounts.findUserByUsername(username);
-    const user2 = Accounts.findUserByEmail(email);
-    if (user1.username == username || user2.emails == email) {
-      console.log("Sorry, that username or email is already taken");
-      return "Sorry, that username or email is already taken";
-    }
-    else {
-      Accounts.createUser({
-        username: username,
-        password: password,
-        emails: email,
-      });
-      console.log("User created successfully!");
-      return "User created successfully!";
-    }
-  }
-}); */
-
-const SEED_USERNAME = 'meteorite';
-const SEED_PASSWORD = 'password';
+const SEED_USERNAME = 'Raskit';
+const SEED_PASSWORD = 'Websveltemeteor22';
+const SEED_EMAIL = 'raskit22@gmail.com';
 
 Meteor.startup(() => {
   if (!Accounts.findUserByUsername(SEED_USERNAME)) {
     Accounts.createUser({
+      email: SEED_EMAIL,
       username: SEED_USERNAME,
       password: SEED_PASSWORD,
     });
   }
-  const user = Accounts.findUserByUsername('Rittikorn');
-  console.log(user);
-  if (Collection.find().count() === 0) {
+  if (QuizDetails.find().count() === 0) {
     [
-      'First Question',
-      'Second Question',
-      'Third Question',
-      'Forth Question',
-      'Fifth Question',
-      'Sixth Question',
-    ].forEach(textQuestion => insertQuestion(textQuestion, user))
+      { Question: "Question 1", Choice1: "Choice1", Choice2: "Choice2" },
+      { Question: "Question 2", Choice1: "Choice1", Choice2: "Choice2" },
+      { Question: "Question 3", Choice1: "Choice1", Choice2: "Choice2" },
+      { Question: "Question 4", Choice1: "Choice1", Choice2: "Choice2" },
+      { Question: "Question 5", Choice1: "Choice1", Choice2: "Choice2" },
+    ].forEach((quiz, index) => insertQuestion(index, quiz));
   }
+
+//   const handle = Messages.find({ roomId }).observeChanges({
+//     added: (id) => {
+//       count += 1;
+//   }
+
+//   if (!initializing) {
+//     this.changed('counts', roomId, { count });
+//   }
+
+//   Meteor.publish('secretData', function () {
+//     if (this.userId === 'superuser') {
+//       return SecretData.find();
+//     } else {
+//       // Declare that no data is being published. If you leave this line out,
+//       // Meteor will never consider the subscription ready because it thinks
+//       // you're using the `added/changed/removed` interface where you have to
+//       // explicitly call this.ready
+//       return [];
+//     }
+//   },
+
+//   removed: (id) => {
+//   count -= 1;
+//   this.changed('counts', roomId, { count });
+//  }
+
 });

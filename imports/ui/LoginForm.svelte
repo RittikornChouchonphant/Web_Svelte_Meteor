@@ -2,6 +2,7 @@
     import { Meteor } from "meteor/meteor";
     import { navigate } from "svelte-routing";
     import { Accounts } from "meteor/accounts-base";
+    import "bootstrap/dist/css/bootstrap.min.css";
 
     function swithSignup() {
         if (document.getElementById("loginDiv").style.display === "block") {
@@ -152,7 +153,7 @@
                 />
                 <input
                     type="text"
-                    placeholder="Full name"
+                    placeholder="Username"
                     id="signupfullname"
                     bind:value={fullname}
                     required
