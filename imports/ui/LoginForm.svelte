@@ -11,7 +11,7 @@
         }
     }
 
-    let code = "";
+    let qcode = "";
     let username = "";
     let password = "";
 
@@ -60,6 +60,10 @@
             return false;
         }
     }
+
+    function handleCode() {
+        navigate("/takequiz/" + qcode);
+    }
 </script>
 
 <div class="row">
@@ -74,8 +78,9 @@
                 style="margin-top: 7%; margin-right: 18%; font-family: Gotham; font-size:1.6vw; color: #ffffff; text-align: right;"
             >
                 No login required to take quiz <br /> <br />
-                Custom Power Point style quiz <br /> <br />
-                Get rid of outdated <br /> style with our template <br /> <br />
+                Create completed quiz in 2 minutes! <br /> <br />
+                Get rid of outdated rule <br /> with WouldYouRather mode <br />
+                <br />
                 Tons of features to control <br /> sleepy students!
             </p>
         </div>
@@ -90,13 +95,13 @@
             >
                 Just taking a quiz?
             </h1>
-            <form>
+            <form on:submit={handleCode}>
                 <input
-                    type="text"
+                    type="number"
                     placeholder="Paste your quiz code here"
-                    name="code"
-                    bind:value={code}
-                    style="margin-top: 25px; margin-bottom: 90px;"
+                    id="qcode"
+                    bind:value={qcode}
+                    class="qcode"
                 />
             </form>
             <h1
@@ -243,5 +248,15 @@
 
     br {
         margin: 7px 0;
+    }
+
+    .qcode {
+        margin-top: 25px;
+        margin-bottom: 90px;
+    }
+
+    .qcode:invalid {
+        background-color: #ffddd9;
+        color: #fa8072;
     }
 </style>

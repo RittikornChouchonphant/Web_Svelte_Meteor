@@ -407,21 +407,6 @@
         padding-bottom: 0.2em;
     }
 
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    input[type="number"] {
-        -moz-appearance: textfield;
-    }
-
-    input:focus {
-        outline: none;
-        box-shadow: none;
-    }
-
     .parameters {
         display: flex;
         justify-content: center;
@@ -439,11 +424,6 @@
         color: #766e77;
         padding-bottom: 0.2em;
         width: 3rem;
-    }
-
-    .timeout:invalid {
-        background-color: #ffddd9;
-        color: #fa8072;
     }
 
     .pl {

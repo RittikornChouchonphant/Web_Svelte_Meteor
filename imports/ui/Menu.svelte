@@ -13,10 +13,6 @@
             qtt: "1200",
         },
         { code: "444444", title: "TOC Quiz", qtn: "20", qtt: "1130" },
-        { code: "444444", title: "TOC Quiz", qtn: "20", qtt: "1130" },
-        { code: "444444", title: "TOC Quiz", qtn: "20", qtt: "1130" },
-        { code: "444444", title: "TOC Quiz", qtn: "20", qtt: "1130" },
-        { code: "444444", title: "TOC Quiz", qtn: "20", qtt: "1130" },
     ];
 
     $m: {
@@ -30,20 +26,48 @@
     <div class="col2">
         <div class="card">
             <h1 class="cardtitle">Created Old School Quiz</h1>
-            <p>Here is a list of what you have created.</p>
+            <p>
+                Here is a list of what you have created. Click on the quiz you
+                want to edit
+            </p>
             <div class="col3" style="margin-top: 1.4em;">
-                <div class="table1"><p>Quiz Title</p></div>
-                <div class="table2"><p>Questions</p></div>
-                <div class="table3"><p>Time</p></div>
+                <div style="width: 11%" />
+                <div style="width: 10%" />
+                <div style="width: 41%"><p>Quiz Title</p></div>
+                <div style="width: 22%"><p>Questions</p></div>
+                <div style="width: 16%"><p>Time</p></div>
             </div>
             <div class="scroll">
-                <div class="col1">a</div>
                 <div>
+                    {#each tbc as q, i}
+                        <div
+                            id={q.code}
+                            style="display: flex; flex-direction: row;"
+                        >
+                            <div
+                                class="col4"
+                                on:click={() => {
+                                    tbc.splice(i, 1);
+                                    console.log(tbc);
+                                    document.getElementById(q.code).remove();
+                                    document
+                                        .getElementById("q" + q.code)
+                                        .remove();
+                                }}
+                            >
+                                ❌
+                            </div>
+                            <div class="col4" on:click={() => {}}>🚀</div>
+                        </div>
+                    {/each}
+                </div>
+                <div style="width: 80%;">
                     <ul class="cardarea">
-                        {#each tbc as q}
+                        {#each tbc as q, i}
                             <li>
                                 <div
-                                    class="col3"
+                                    class="col4"
+                                    id={"q" + q.code}
                                     on:click={() => {
                                         navigate("/quiz/" + q.code);
                                     }}
@@ -81,31 +105,36 @@
         margin: 0;
     }
 
-    .col1 {
-        border: 1px solid sandybrown;
-    }
-
     .col2 {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(60ch, 1fr));
         row-gap: 1.8rem;
         column-gap: 1.8rem;
+        margin-top: 2.5em;
     }
 
     .col3 {
-        border: 1px solid blue;
+        display: flex;
+        padding: 0.5em 0.7em 0.5em 0.7em;
+    }
+
+    .col4 {
         display: flex;
         justify-content: space-evenly;
         padding: 0.5em 0.7em 0.5em 0.7em;
     }
 
-    .col3:hover {
+    .col4:hover {
+        cursor: pointer;
+    }
+
+    .col4:hover {
         background-color: #eeedfc;
         border-radius: 0.2em;
     }
 
     .table1 {
-        width: 50%;
+        width: 45%;
     }
 
     .table1:hover {
@@ -128,7 +157,6 @@
 
     .data:hover {
         color: #555555;
-        cursor: pointer;
     }
 
     .scroll {

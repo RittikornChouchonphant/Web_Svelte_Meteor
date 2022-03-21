@@ -5,6 +5,7 @@
     import OldschoolQuiz from "./OldschoolQuiz.svelte";
     import WouldYouRather from "./WouldYouRather.svelte";
     import EditOldschoolQuiz from "./EditOldschoolQuiz.svelte";
+    import AutoGenQuiz from "./AutoGenQuiz.svelte";
 
     let user = null;
 
@@ -33,6 +34,7 @@
             <Route path="createquiz" component={CreateQuizMaster} />
             <Route path="quiz/:id" component={EditOldschoolQuiz} />
             <Route path="oldschoolquiz" component={OldschoolQuiz} />
+            <Route path="autogenquiz" component={AutoGenQuiz} />
             <Route path="wouldyourather" component={WouldYouRather} />
         </div>
     </Router>

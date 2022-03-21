@@ -1,5 +1,6 @@
 <script>
-    import { navigate, Router, links, Route, Link } from "svelte-routing";
+    import { navigate, Router, Route } from "svelte-routing";
+    import AutoGenQuiz from "./AutoGenQuiz.svelte";
     import OldschoolQuiz from "./OldschoolQuiz.svelte";
     import WouldYouRather from "./WouldYouRather.svelte";
 
@@ -23,7 +24,7 @@
             <p>Old School Quiz</p>
         </div>
         <div class="thumbnail">
-            <a href="/oldschoolquiz">
+            <a href="/autogenquiz">
                 <img
                     src="/assets/thumbnails/OldSchoolQuizThumbnail.png"
                     alt="OldSchoolQuizThumbnail"
@@ -40,6 +41,7 @@
         </div>
         <div>
             <Route path="oldschoolquiz" component={OldschoolQuiz} />
+            <Route path="autogenquiz" component={AutoGenQuiz} />
             <Route path="wouldyourather" component={WouldYouRather} />
         </div>
     </Router>
