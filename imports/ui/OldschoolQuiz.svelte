@@ -1,9 +1,15 @@
 <script>
+    import { Meteor } from "meteor/meteor";
     import { navigate } from "svelte-routing";
+    import { Quiz } from '../api/Quiz';
     let inc = 4;
+
     let fileinput;
 
+    let num =  Math.floor(Math.random() * 999999);
+
     let quiztitle = "";
+
     let quiz = [
         {
             qno: "1",
@@ -111,6 +117,16 @@
                 break;
             }
         }
+
+        Quiz.insert({
+                name:quiztitle, 
+                User:user,
+                No: num,
+                createAt:new Date(),
+                Quiz:quiz,
+        });
+        alert("Save Change");
+
         return;
     }
 
@@ -127,179 +143,232 @@
             return;
         }
     };
+
+    let user = null;
+    $m: {
+        user = Meteor.user();
+    }
 </script>
 
-<div class="col2">
-    <div class="left">
-        <ul class="cardarea">
-            {#each quiz as q (q.qno)}
-                <li class="card">
-                    <div class="col3">
-                        <h1>Question {q.qno}</h1>
-                        <div class="pcard">
-                            <input
-                                class="googleinput"
-                                type="text"
-                                placeholder="Question {q.qno}"
-                                bind:value={q.ques}
-                            />
-                            <img
-                                src={q.qimg}
-                                alt="questionimage"
-                                width="52%"
-                                style="cursor: pointer;"
-                                on:click={() => {
-                                    fileinput.click();
-                                }}
-                            />
-                            <input
-                                style="display:none"
-                                type="file"
-                                accept=".jpg, .jpeg, .png"
-                                on:change={(e) => {}}
-                                bind:this={fileinput}
-                            />
-                            <div class="choices">
-                                <div class="a" id="a{q.qno}">
-                                    <div
-                                        class="toggleanswer"
-                                        on:click={() => {
-                                            if (q.c1c == false) {
-                                                document.getElementById(
-                                                    "a" + q.qno
-                                                ).style.opacity = 0.7;
-                                                q.c1c = true;
-                                            } else {
-                                                document.getElementById(
-                                                    "a" + q.qno
-                                                ).style.opacity = 1.0;
-                                                q.c1c = false;
-                                            }
-                                        }}
-                                    />
-                                    <input
-                                        class="inputchoice"
-                                        type="text"
-                                        placeholder="Add answer 1"
-                                        maxlength="30"
-                                        required
-                                        bind:value={q.c1}
-                                    />
-                                </div>
-                                <div class="b" id="b{q.qno}">
-                                    <div
-                                        class="toggleanswer"
-                                        on:click={() => {
-                                            if (q.c2c == false) {
-                                                document.getElementById(
-                                                    "b" + q.qno
-                                                ).style.opacity = 0.7;
-                                                q.c2c = true;
-                                            } else {
-                                                document.getElementById(
-                                                    "b" + q.qno
-                                                ).style.opacity = 1.0;
-                                                q.c2c = false;
-                                            }
-                                        }}
-                                    />
-                                    <input
-                                        class="inputchoice"
-                                        type="text"
-                                        placeholder="Add answer 2"
-                                        maxlength="30"
-                                        required
-                                        bind:value={q.c2}
-                                    />
-                                </div>
-                                <div class="c" id="c{q.qno}">
-                                    <div
-                                        class="toggleanswer"
-                                        on:click={() => {
-                                            if (q.c3c == false) {
-                                                document.getElementById(
-                                                    "c" + q.qno
-                                                ).style.opacity = 0.7;
-                                                q.c3c = true;
-                                            } else {
-                                                document.getElementById(
-                                                    "c" + q.qno
-                                                ).style.opacity = 1.0;
-                                                q.c3c = false;
-                                            }
-                                        }}
-                                    />
-                                    <input
-                                        class="inputchoice"
-                                        type="text"
-                                        placeholder="Add answer 3 (Optional)"
-                                        maxlength="30"
-                                        bind:value={q.c3}
-                                    />
-                                </div>
-                                <div class="d" id="d{q.qno}">
-                                    <div
-                                        class="toggleanswer"
-                                        on:click={() => {
-                                            if (q.c4c == false) {
-                                                document.getElementById(
-                                                    "d" + q.qno
-                                                ).style.opacity = 0.7;
-                                                q.c4c = true;
-                                            } else {
-                                                document.getElementById(
-                                                    "d" + q.qno
-                                                ).style.opacity = 1.0;
-                                                q.c4c = false;
-                                            }
-                                        }}
-                                    />
-                                    <input
-                                        class="inputchoice"
-                                        type="text"
-                                        placeholder="Add answer 4 (Optional)"
-                                        maxlength="30"
-                                        bind:value={q.c4}
-                                    />
-                                </div>
-                            </div>
-                            <div class="parameters">
-                                <p class="pl">Time Limit (sec):</p>
+<div class="mastermenu">
+    <div class="sidebar">
+        <div class="navblock" style="margin-top: 1em;">
+            <h2>Welcome back, {user.username}</h2>
+        </div>
+        <div class="line" />
+        <div
+            class="navblock"
+            on:click={() => {
+                navigate("/menu");
+            }}
+        >
+            <h2>Dashboard</h2>
+        </div>
+        <div
+            class="navblock"
+            style="background-color: #eff0ff;"
+            on:click={() => {
+                navigate("/createquiz");
+            }}
+        >
+            <h2>Old School Quiz</h2>
+        </div>
+        <div
+            class="navblock"
+            on:click={() => {
+                Meteor.logout();
+                navigate("/");
+            }}
+        >
+            <h2>Logout</h2>
+        </div>
+    </div>
+    <div class="col2">
+        <div class="left">
+            <ul class="cardarea">
+                {#each quiz as q (q.qno)}
+                    <li class="card">
+                        <div class="col3">
+                            <h1>Question {q.qno}</h1>
+                            <div class="pcard">
                                 <input
-                                    bind:value={q.t}
-                                    class="timeout"
-                                    type="number"
-                                    min="10"
-                                    max="90"
-                                    placeholder="30"
+                                    class="googleinput"
+                                    type="text"
+                                    placeholder="Question {q.qno}"
+                                    bind:value={q.ques}
                                 />
+                                <img
+                                    src={q.qimg}
+                                    alt="questionimage"
+                                    width="52%"
+                                    style="cursor: pointer;"
+                                    on:click={() => {
+                                        fileinput.click();
+                                    }}
+                                />
+                                <input
+                                    style="display:none"
+                                    type="file"
+                                    accept=".jpg, .jpeg, .png"
+                                    on:change={(e) => {}}
+                                    bind:this={fileinput}
+                                />
+                                <div class="choices">
+                                    <div class="a" id="a{q.qno}">
+                                        <div
+                                            class="toggleanswer"
+                                            on:click={() => {
+                                                if (q.c1c == false) {
+                                                    document.getElementById(
+                                                        "a" + q.qno
+                                                    ).style.opacity = 0.7;
+                                                    q.c1c = true;
+                                                } else {
+                                                    document.getElementById(
+                                                        "a" + q.qno
+                                                    ).style.opacity = 1.0;
+                                                    q.c1c = false;
+                                                }
+                                            }}
+                                        />
+                                        <input
+                                            class="inputchoice"
+                                            type="text"
+                                            placeholder="Add answer 1"
+                                            maxlength="30"
+                                            required
+                                            bind:value={q.c1}
+                                        />
+                                    </div>
+                                    <div class="b" id="b{q.qno}">
+                                        <div
+                                            class="toggleanswer"
+                                            on:click={() => {
+                                                if (q.c2c == false) {
+                                                    document.getElementById(
+                                                        "b" + q.qno
+                                                    ).style.opacity = 0.7;
+                                                    q.c2c = true;
+                                                } else {
+                                                    document.getElementById(
+                                                        "b" + q.qno
+                                                    ).style.opacity = 1.0;
+                                                    q.c2c = false;
+                                                }
+                                            }}
+                                        />
+                                        <input
+                                            class="inputchoice"
+                                            type="text"
+                                            placeholder="Add answer 2"
+                                            maxlength="30"
+                                            required
+                                            bind:value={q.c2}
+                                        />
+                                    </div>
+                                    <div class="c" id="c{q.qno}">
+                                        <div
+                                            class="toggleanswer"
+                                            on:click={() => {
+                                                if (q.c3 != "") {
+                                                    if (q.c3c == false) {
+                                                        document.getElementById(
+                                                            "c" + q.qno
+                                                        ).style.opacity = 0.7;
+                                                        q.c3c = true;
+                                                    } else {
+                                                        document.getElementById(
+                                                            "c" + q.qno
+                                                        ).style.opacity = 1.0;
+                                                        q.c3c = false;
+                                                    }
+                                                } else {
+                                                    alert(
+                                                        "Please fill in choice 3 and 4 first"
+                                                    );
+                                                }
+                                            }}
+                                        />
+                                        <input
+                                            class="inputchoice"
+                                            type="text"
+                                            placeholder="Add answer 3 (Optional)"
+                                            maxlength="30"
+                                            bind:value={q.c3}
+                                        />
+                                    </div>
+                                    <div class="d" id="d{q.qno}">
+                                        <div
+                                            class="toggleanswer"
+                                            on:click={() => {
+                                                if (q.c4 != "") {
+                                                    if (q.c4c == false) {
+                                                        document.getElementById(
+                                                            "d" + q.qno
+                                                        ).style.opacity = 0.7;
+                                                        q.c4c = true;
+                                                    } else {
+                                                        document.getElementById(
+                                                            "d" + q.qno
+                                                        ).style.opacity = 1.0;
+                                                        q.c4c = false;
+                                                    }
+                                                } else {
+                                                    alert(
+                                                        "Please fill in choice 3 and 4 first"
+                                                    );
+                                                }
+                                            }}
+                                        />
+                                        <input
+                                            class="inputchoice"
+                                            type="text"
+                                            placeholder="Add answer 4 (Optional)"
+                                            maxlength="30"
+                                            bind:value={q.c4}
+                                        />
+                                    </div>
+                                </div>
+                                <div class="parameters">
+                                    <p class="pl">Time Limit (sec):</p>
+                                    <input
+                                        bind:value={q.t}
+                                        class="timeout"
+                                        type="number"
+                                        min="10"
+                                        max="90"
+                                        placeholder="30"
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-            {/each}
-        </ul>
-    </div>
-    <div class="right">
-        <button class="addbutton" on:click={addQuestion}> Add question </button>
-        <button class="deletebutton" on:click={deleteLastQuestion}>
-            Delete last question
-        </button>
-        <button class="cancelbutton" on:click={CancelChanges}>
-            Cancel changes
-        </button>
-        <button class="savebutton" on:click={SaveChanges}>
-            Save changes
-        </button>
-        <h1>Quiz Title?</h1>
-        <input
-            bind:value={quiztitle}
-            type="text"
-            placeholder="quiz"
-            maxlength="30"
-            minlength="5"
-            required
-        />
+                    </li>
+                {/each}
+            </ul>
+        </div>
+        <div class="right">
+            <button class="addbutton" on:click={addQuestion}>
+                Add question
+            </button>
+            <button class="deletebutton" on:click={deleteLastQuestion}>
+                Delete last question
+            </button>
+            <button class="cancelbutton" on:click={CancelChanges}>
+                Cancel changes
+            </button>
+            <button class="savebutton" on:click={SaveChanges}>
+                Save changes
+            </button>
+            <h1>Quiz Title?</h1>
+            <input
+                bind:value={quiztitle}
+                type="text"
+                placeholder="quiz"
+                maxlength="30"
+                minlength="5"
+                required
+            />
+        </div>
     </div>
 </div>
 
@@ -309,9 +378,52 @@
         src: url(/fonts/supermarket.ttf) format("truetype");
     }
 
+    .mastermenu {
+        background-color: #f7f7ff;
+        display: grid;
+        grid-template-columns: 12% auto;
+    }
+
+    .sidebar {
+        height: 100vh;
+        background-color: #ffffff;
+        position: sticky;
+        top: 0;
+    }
+
+    .navblock {
+        width: 100%;
+        border-radius: 0.4em;
+        padding: 0.7em 0.2em 0.2em 0.9em;
+        margin-bottom: 1em;
+    }
+
+    .navblock:hover {
+        background-color: #eff0ff;
+        cursor: pointer;
+    }
+
+    .line {
+        background-color: #eff0ff;
+        height: 5px;
+        width: 87%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 0.4em;
+        margin-bottom: 2em;
+    }
+
+    h2 {
+        font-family: Nunito;
+        font-size: 1.7em;
+        color: #8d89ee;
+    }
+
     .col2 {
         display: flex;
         flex-direction: row;
+        padding-left: 2em;
+        padding-top: 2em;
     }
 
     .col3 {

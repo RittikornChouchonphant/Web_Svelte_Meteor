@@ -3,6 +3,7 @@
     import { navigate } from "svelte-routing";
     import { Accounts } from "meteor/accounts-base";
     import "bootstrap/dist/css/bootstrap.min.css";
+    import { Quizlive } from '../api/Quizlive';
 
     function swithSignup() {
         if (document.getElementById("loginDiv").style.display === "block") {
@@ -24,10 +25,21 @@
     $m: {
         user = Meteor.user();
     }
+    
+    var  quizlive = Quizlive.find({});
 
     function handleSubmit() {
-        Meteor.loginWithPassword(username, password);
-        navigate("/menu", { replace: true });
+        if (Meteor.users.findOne({ username: username })) {
+            Meteor.loginWithPassword(username, password, function (error) {
+                if (error != undefined) {
+                    alert(error);
+                } else {
+                    navigate("/menu", { replace: true });
+                }
+            });
+        } else {
+            alert("Sorry, incorrect username or password. Please try again.");
+        }
     }
 
     function handleSignup() {
@@ -62,13 +74,19 @@
     }
 
     function handleCode() {
-        navigate("/takequiz/" + qcode);
+    quizlive.forEach((q) => {
+        if(q.no == qcode){
+            navigate("/takequiz/" + qcode);
+            return  false;
+        }
+    });{alert('not have this room');}
     }
+
 </script>
 
-<div class="row">
+<div class="row" style="width: 100vw;">
     <div class="col">
-        <div class="pt-5" style="background-color: #736AEF; height: 93vh;">
+        <div class="pt-5" style="background-color: #736AEF; height: 100vh;">
             <h1
                 style="font-family: Rockwell; color: #ffffff; font-size:3vw; font-weight: 600; text-align: center;"
             >

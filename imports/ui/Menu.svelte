@@ -1,7 +1,8 @@
 <script>
     import { Meteor } from "meteor/meteor";
     import { navigate } from "svelte-routing";
-
+    import { Quizlive } from '../api/Quizlive';
+    
     let user = null;
     let tbc = [
         { code: "111111", title: "Python Quiz", qtn: "10", qtt: "660" },
@@ -15,14 +16,53 @@
         { code: "444444", title: "TOC Quiz", qtn: "20", qtt: "1130" },
     ];
 
+    tbc.forEach((q) => {
+        Quizlive.insert({
+        no :q.code,
+        title:q.title,
+        qtn:q.qtn,
+        qtt:q.qtt,
+    }); 
+    });
+
     $m: {
         user = Meteor.user();
     }
 </script>
 
-<div>
-    <h1>Welcome back, {user.username}</h1>
-    <p>Make sure to validate your e-mail at {user.emails[0].address}.</p>
+<div class="mastermenu">
+    <div class="sidebar">
+        <div class="navblock" style="margin-top: 1em;">
+            <h2>Welcome back, {user.username}</h2>
+        </div>
+        <div class="line" />
+        <div
+            class="navblock"
+            style="background-color: #eff0ff;"
+            on:click={() => {
+                navigate("/menu");
+            }}
+        >
+            <h2>Dashboard</h2>
+        </div>
+        <div
+            class="navblock"
+            on:click={() => {
+                navigate("/createquiz");
+            }}
+        >
+            <h2>Create New Quiz</h2>
+        </div>
+        <div
+            class="navblock"
+            on:click={() => {
+                Meteor.logout();
+                navigate("/");
+            }}
+        >
+            <h2>Logout</h2>
+        </div>
+    </div>
     <div class="col2">
         <div class="card">
             <h1 class="cardtitle">Created Old School Quiz</h1>
@@ -57,7 +97,14 @@
                             >
                                 ❌
                             </div>
-                            <div class="col4" on:click={() => {}}>🚀</div>
+                            <div
+                                class="col4"
+                                on:click={() => {
+                                    navigate("/admin/startquiz/" + q.code);
+                                }}
+                            >
+                                🚀
+                            </div>
                         </div>
                     {/each}
                 </div>
@@ -98,11 +145,52 @@
 </div>
 
 <style>
+    .mastermenu {
+        background-color: #f7f7ff;
+        display: grid;
+        grid-template-columns: 12% auto;
+    }
+
+    .sidebar {
+        height: 100vh;
+        background-color: #ffffff;
+        position: sticky;
+        top: 0;
+    }
+
+    .navblock {
+        width: 100%;
+        border-radius: 0.4em;
+        padding: 0.7em 0.2em 0.2em 0.9em;
+        margin-bottom: 1em;
+    }
+
+    .navblock:hover {
+        background-color: #eff0ff;
+        cursor: pointer;
+    }
+
+    .line {
+        background-color: #eff0ff;
+        height: 5px;
+        width: 87%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 0.4em;
+        margin-bottom: 2em;
+    }
+
     p {
         color: #81839d;
         font-family: Nunito;
         font-weight: 100;
         margin: 0;
+    }
+
+    h2 {
+        font-family: Nunito;
+        font-size: 1.7em;
+        color: #8d89ee;
     }
 
     .col2 {
@@ -111,6 +199,7 @@
         row-gap: 1.8rem;
         column-gap: 1.8rem;
         margin-top: 2.5em;
+        padding: 0em 2em 0em 2em;
     }
 
     .col3 {

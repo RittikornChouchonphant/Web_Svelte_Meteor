@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { QuizDetails } from '../imports/api/QuizDetails';
+import { Quizlive } from '../imports/api/Quizlive';
+import { QuizTaker } from '../imports/api/QuizTaker';
 import { Quiz } from '../imports/api/Quiz';
 
 const insertQuestion = (no, obj) => { QuizDetails.insert({ No: no, Obj: obj }) }
@@ -26,31 +28,4 @@ Meteor.startup(() => {
       { Question: "Question 5", Choice1: "Choice1", Choice2: "Choice2" },
     ].forEach((quiz, index) => insertQuestion(index, quiz));
   }
-
-//   const handle = Messages.find({ roomId }).observeChanges({
-//     added: (id) => {
-//       count += 1;
-//   }
-
-//   if (!initializing) {
-//     this.changed('counts', roomId, { count });
-//   }
-
-//   Meteor.publish('secretData', function () {
-//     if (this.userId === 'superuser') {
-//       return SecretData.find();
-//     } else {
-//       // Declare that no data is being published. If you leave this line out,
-//       // Meteor will never consider the subscription ready because it thinks
-//       // you're using the `added/changed/removed` interface where you have to
-//       // explicitly call this.ready
-//       return [];
-//     }
-//   },
-
-//   removed: (id) => {
-//   count -= 1;
-//   this.changed('counts', roomId, { count });
-//  }
-
 });
