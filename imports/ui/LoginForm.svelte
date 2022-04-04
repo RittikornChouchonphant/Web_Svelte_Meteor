@@ -3,6 +3,7 @@
     import { navigate } from "svelte-routing";
     import { Accounts } from "meteor/accounts-base";
     import "bootstrap/dist/css/bootstrap.min.css";
+    import { Quizlive } from '../api/Quizlive';
 
     function swithSignup() {
         if (document.getElementById("loginDiv").style.display === "block") {
@@ -11,7 +12,7 @@
         }
     }
 
-    let code = "";
+    let qcode = "";
     let username = "";
     let password = "";
 
@@ -24,10 +25,21 @@
     $m: {
         user = Meteor.user();
     }
+    
+    var  quizlive = Quizlive.find({});
 
     function handleSubmit() {
-        Meteor.loginWithPassword(username, password);
-        navigate("/menu", { replace: true });
+        if (Meteor.users.findOne({ username: username })) {
+            Meteor.loginWithPassword(username, password, function (error) {
+                if (error != undefined) {
+                    alert(error);
+                } else {
+                    navigate("/menu", { replace: true });
+                }
+            });
+        } else {
+            alert("Sorry, incorrect username or password. Please try again.");
+        }
     }
 
     function handleSignup() {
@@ -60,11 +72,21 @@
             return false;
         }
     }
+
+    function handleCode() {
+    quizlive.forEach((q) => {
+        if(q.no == qcode){
+            navigate("/takequiz/" + qcode);
+            return  false;
+        }
+    });{alert('not have this room');}
+    }
+
 </script>
 
-<div class="row">
+<div class="row" style="width: 100vw;">
     <div class="col">
-        <div class="pt-5" style="background-color: #736AEF; height: 93vh;">
+        <div class="pt-5" style="background-color: #736AEF; height: 100vh;">
             <h1
                 style="font-family: Rockwell; color: #ffffff; font-size:3vw; font-weight: 600; text-align: center;"
             >
@@ -74,8 +96,9 @@
                 style="margin-top: 7%; margin-right: 18%; font-family: Gotham; font-size:1.6vw; color: #ffffff; text-align: right;"
             >
                 No login required to take quiz <br /> <br />
-                Custom Power Point style quiz <br /> <br />
-                Get rid of outdated <br /> style with our template <br /> <br />
+                Create completed quiz in 2 minutes! <br /> <br />
+                Get rid of outdated rule <br /> with WouldYouRather mode <br />
+                <br />
                 Tons of features to control <br /> sleepy students!
             </p>
         </div>
@@ -90,13 +113,13 @@
             >
                 Just taking a quiz?
             </h1>
-            <form>
+            <form on:submit={handleCode}>
                 <input
-                    type="text"
+                    type="number"
                     placeholder="Paste your quiz code here"
-                    name="code"
-                    bind:value={code}
-                    style="margin-top: 25px; margin-bottom: 90px;"
+                    id="qcode"
+                    bind:value={qcode}
+                    class="qcode"
                 />
             </form>
             <h1
@@ -243,5 +266,15 @@
 
     br {
         margin: 7px 0;
+    }
+
+    .qcode {
+        margin-top: 25px;
+        margin-bottom: 90px;
+    }
+
+    .qcode:invalid {
+        background-color: #ffddd9;
+        color: #fa8072;
     }
 </style>

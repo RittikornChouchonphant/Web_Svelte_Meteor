@@ -1,5 +1,6 @@
 <script>
     import { links, navigate } from "svelte-routing";
+    import { QuizTaker } from '../api/QuizTaker';
 
     export let id;
     console.log(id);
@@ -17,6 +18,11 @@
 
     let completeForm = false;
     function handleLobby() {
+        QuizTaker.insert({
+            no: id,
+            name: guestName,
+            score: 0,
+        });
         completeForm = true;
     }
 
@@ -74,7 +80,7 @@
         src: url(/fonts/gotham-bold.woff2) format("woff2");
     }
 
-    p,
+
     h1 {
         margin: 0;
         color: #ffffff;

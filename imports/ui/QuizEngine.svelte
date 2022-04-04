@@ -1,6 +1,4 @@
 <script>
-    import { navigate } from "svelte-routing";
-
     export let id;
 
     let quizArr = [
@@ -9,68 +7,68 @@
         {
             quiz: [
                 {
-                    q: "Question 1",
+                    q: "บุคคลใดต่อไปนี้ ใครที่มีหลักการในการคงคุณค่าของสารอาหารได้ถูกต้อง",
                     timeout: "30",
-                    img: "https://cdn.discordapp.com/attachments/731849212274147339/911087741075324958/perfstat_fail.png",
-                    c1: "choice1question1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                    img: null,
+                    c1: "กระแตแช่เย็นผลไม้แทนการแช่แข็งเพื่อคงคุณค่าทางวิตามินไว้",
                     c1t: false,
-                    c2: "choice2question1",
+                    c2: "กระรอกซื้อนมพาสเจอไรซ์ที่บรรจุในขวดแก้วใส เนื่องจากเห็นเนื้อนมชัดเจนดี",
                     c2t: false,
-                    c3: "choice3question1",
+                    c3: "กระต่ายนำเนื้อหมูแช่แข็งมาละลายในน้ำเพื่อประหยัดเวลา",
                     c3t: false,
-                    c4: "choice4question1",
+                    c4: "ไม่มีข้อใดถูกต้อง",
                     c4t: true,
                 },
                 {
-                    q: "Question 2",
-                    timeout: "30",
-                    img: "https://cdn.discordapp.com/attachments/731849212274147339/911087741075324958/perfstat_fail.png",
-                    c1: "c1q2",
+                    q: "ข้อใดกล่าวผิด",
+                    timeout: "15",
+                    img: "https://static.thairath.co.th/media/dFQROr7oWzulq5Fa4V4p7x8JvliFZynX755QON674rKLNllwJ7tF3Fn2tkVOJU1T7Ex.jpg",
+                    c1: "การอบแห้งเป็นการแปรรูปอาหารที่ทำให้คุณค่าทางอาหารสูงขึ้น เนื่องมาจากความเข้มข้นของปริมาณสารอาหารที่มากขึ้น",
                     c1t: false,
-                    c2: "c2q2",
-                    c2t: false,
-                    c3: "c3q2",
-                    c3t: true,
-                    c4: "c4q2",
-                    c4t: false,
-                },
-                {
-                    q: "Question 3",
-                    timeout: "30",
-                    img: "https://cdn.discordapp.com/attachments/731849212274147339/911087741075324958/perfstat_fail.png",
-                    c1: "c1q3",
-                    c1t: false,
-                    c2: "c2q3",
+                    c2: "อาหารประเภทให้พลังงานสูง เช่นเนื้อสัตว์ ควรรับประทานในมื้อเที่ยงจึงจะเหมาะสมที่สุด",
                     c2t: true,
-                    c3: "c3q3",
+                    c3: "",
                     c3t: false,
-                    c4: "c4q3",
+                    c4: "",
                     c4t: false,
                 },
                 {
-                    q: "Question 4",
-                    timeout: "30",
-                    img: "https://cdn.discordapp.com/attachments/731849212274147339/911087741075324958/perfstat_fail.png",
-                    c1: "c1q4",
-                    c1t: true,
-                    c2: "c2q4",
-                    c2t: false,
-                    c3: "c3q4",
-                    c3t: false,
-                    c4: "c4q4",
-                    c4t: false,
-                },
-                {
-                    q: "Question 5",
-                    timeout: "30",
-                    img: "https://cdn.discordapp.com/attachments/731849212274147339/911087741075324958/perfstat_fail.png",
-                    c1: "c1q5",
+                    q: "คำว่าโภชนาการสามารถเกิดขึ้นได้ตั้งแต่เมื่อไร",
+                    timeout: "15",
+                    img: "https://www.nutritionbureau.nz/wp-content/uploads/2021/09/healthy-food-nutrition.jpg",
+                    c1: "เมื่อแม่ครัวกำลังทำอาหารให้เรา",
                     c1t: false,
-                    c2: "c2q5",
+                    c2: "เมื่ออาหารถูกรับประทานเข้าปาก",
                     c2t: true,
-                    c3: "c3q5",
+                    c3: "เมื่อแม่ครัวนำอาหารวางบนจาน",
                     c3t: false,
-                    c4: "c4q5",
+                    c4: "ตั้งแต่เลือกวัตถุดิบมาปรุงอาหาร",
+                    c4t: false,
+                },
+                {
+                    q: "ในพลังงาน 400 กิโลแคลอรี่เท่ากัน อาหารชนิดใดมีความหนาแน่นของพลังงานอาหารน้อยที่สุด",
+                    timeout: "10",
+                    img: null,
+                    c1: "ซาลาเปาใส้ครีม",
+                    c1t: false,
+                    c2: "สลัดผักกาดแก้ว",
+                    c2t: true,
+                    c3: "ไก่ทอดหนังกรอบ",
+                    c3t: false,
+                    c4: "เวเฟอร์เคลือบช็อคโกแลต",
+                    c4t: false,
+                },
+                {
+                    q: "คนสอนชื่ออะไร",
+                    timeout: "5",
+                    img: null,
+                    c1: "เอ",
+                    c1t: false,
+                    c2: "โอ",
+                    c2t: true,
+                    c3: "ไอ",
+                    c3t: false,
+                    c4: "อี",
                     c4t: false,
                 },
             ],
@@ -79,110 +77,188 @@
 
     let use = quizArr[2].quiz;
     let qindex = 0;
-    var countdown = 5;
-    function startTimer() {
-        if (countdown != 0) {
-            countdown -= 1;
-        } else {
-            document.getElementById("counter").style.display = "none";
-            document.getElementById("quiz").style.display = "block";
+
+    var interval, threshold;
+    let icCounter = 1;
+    let score = 0;
+    var secleft = threshold;
+
+    function coreCounter(id) {
+        secleft -= 1000;
+        document.querySelector(id).innerHTML = Math.abs(secleft / 1000);
+        if (secleft == 0) {
+            clearInterval(interval);
+            if (id == "#quiztimeleft") {
+                showAnswer();
+                setTimeout(function () {
+                    icCounter = 1;
+                    if (qindex < use.length - 1) {
+                        qindex += 1;
+                    } else {
+                        icCounter = 2;
+                        qindex = 0;
+                    }
+                }, 2000);
+            }
+            if (id == "#prequizcounter") {
+                icCounter = 0;
+            }
         }
     }
-    setInterval(startTimer, 1000);
 
-    let t;
-    let timesup = false;
-    function counter() {
-        if (t != 0) {
-            t -= 1;
-            document.getElementById("quiztimeleft").innerHTML = t;
-        } else {
-            document.getElementById("quiztimeleft").innerHTML = "Times up!";
-            timesup = true;
-            showAnswer();
-        }
-    }
-    setInterval(counter, 1000);
-
-    function setQuizTimer(time) {
-        t = time;
-        return t;
+    function startCounter(id, th) {
+        clearInterval(interval);
+        threshold = th * 1000;
+        secleft = threshold;
+        interval = setInterval(function () {
+            coreCounter(id);
+        }, 1000);
     }
 
-    function switchTimer(c) {
-        countdown = c;
-        t = 36;
-        document.getElementById("quiz").style.display = "none";
-        document.getElementById("counter").style.display = "block";
-    }
-
-    let isAnswer = false;
+    let isAnswer = false,
+        timesup = false;
+    let choosen = "";
     function handleAnswer(c) {
+        cid = c.slice(0, -1);
         if (isAnswer == false && timesup == false) {
-            alert("You choose choice " + c);
+            choosen = c;
             isAnswer = true;
+            document.getElementById(cid).style.backgroundColor = "#6f73dd80";
         }
     }
 
     function showAnswer() {
-        document.getElementById("c1").style.backgroundColor = "#FA8072";
+        isAnswer = false;
+        let ca = "";
+        let cid, sid;
+        cid = choosen.slice(0, -1);
+        for (const [key, value] of Object.entries(use[qindex])) {
+            if (value == true) {
+                ca = key;
+                sid = ca.slice(0, -1);
+            }
+        }
+        if (choosen == "") {
+            document.getElementById(sid).style.backgroundColor = "#6AD6A4";
+            return;
+        }
+        if (cid == sid) {
+            document.getElementById(cid).style.backgroundColor = "#6AD6A4";
+            score += 1;
+            return;
+        }
+        if (cid != sid) {
+            document.getElementById(cid).style.backgroundColor = "#FA8072";
+            document.getElementById(sid).style.backgroundColor = "#6AD6A4";
+            return;
+        }
     }
 </script>
 
-<div id="counter" class="counter" style="display: block;">
-    <div class="contain" style="height: 95vh;">
-        <h2>{countdown}</h2>
-    </div>
-</div>
-<div id="quiz" class="quiz" style="display: none;">
-    <div class="contain">
-        <p style="margin-bottom: 1.2em;" id="quiztimeleft">
-            {(z = setQuizTimer(36))}
-        </p>
-        <div class="qbase" on:click={() => switchTimer(5)}>
-            <h1>{use[0].q}</h1>
-        </div>
-        <img alt="img" src={use[0].img} />
-        <div class="xbase">
-            <div
-                id="c1"
-                class="cbase"
-                on:click={() => {
-                    handleAnswer("c1t");
-                }}
-            >
-                <p>{use[0].c1}</p>
-            </div>
-            <div
-                id="c2"
-                class="cbase"
-                on:click={() => {
-                    handleAnswer("c2t");
-                }}
-            >
-                <p>{use[0].c2}</p>
-            </div>
-            <div
-                id="c3"
-                class="cbase"
-                on:click={() => {
-                    handleAnswer("c3t");
-                }}
-            >
-                <p>{use[0].c3}</p>
-            </div>
-            <div
-                id="c4"
-                class="cbase"
-                on:click={() => {
-                    handleAnswer("c4t");
-                }}
-            >
-                <p>{use[0].c4}</p>
-            </div>
+{#if icCounter == 1}
+    <div class="quiz" style="height: 100vh">
+        <div class="contain" style="height: 90vh">
+            {#if icCounter == true}
+                <p style="display: none;">
+                    {(z = startCounter("#prequizcounter", 3))}
+                </p>
+                <h2 id="prequizcounter">3</h2>
+            {/if}
         </div>
     </div>
-</div>
+{:else if icCounter == 2}
+    <div class="quiz">
+        <div class="contain">
+            <p>Your score is {score}</p>
+            {#each use as n}
+                <div class="pcard">
+                    <h4 style="margin-bottom: 1em;">{n.q}</h4>
+                    {#if n.c1t == true}
+                        <h4 style="color: #6ad6a4;">{n.c1}</h4>
+                    {:else}
+                        <h4>{n.c1}</h4>
+                    {/if}
+                    {#if n.c2t == true}
+                        <h4 style="color: #6ad6a4;">{n.c2}</h4>
+                    {:else}
+                        <h4>{n.c2}</h4>
+                    {/if}
+                    {#if n.c3 != ""}
+                        {#if n.c3t == true}
+                            <h4 style="color: #6ad6a4;">{n.c3}</h4>
+                        {:else}
+                            <h4>{n.c3}</h4>
+                        {/if}
+                    {/if}
+                    {#if n.c4 != ""}
+                        {#if n.c4t == true}
+                            <h4 style="color: #6ad6a4;">{n.c4}</h4>
+                        {:else}
+                            <h4>{n.c4}</h4>
+                        {/if}
+                    {/if}
+                </div>
+            {/each}
+        </div>
+    </div>
+{:else}
+    <div id="quiz" class="quiz">
+        <div class="contain" style="height: 100vh;">
+            <p style="display: none;">
+                {(z = startCounter("#quiztimeleft", use[qindex].timeout))}
+            </p>
+            <p style="margin-bottom: 1.2em;" id="quiztimeleft">30</p>
+            <div class="qbase">
+                <h1>{use[qindex].q}</h1>
+            </div>
+            {#if use[qindex].img != null}
+                <img alt="img" src={use[qindex].img} />
+            {/if}
+            <div class="xbase">
+                <div
+                    id="c1"
+                    class="cbase"
+                    on:click={() => {
+                        handleAnswer("c1t");
+                    }}
+                >
+                    <p>{use[qindex].c1}</p>
+                </div>
+                <div
+                    id="c2"
+                    class="cbase"
+                    on:click={() => {
+                        handleAnswer("c2t");
+                    }}
+                >
+                    <p>{use[qindex].c2}</p>
+                </div>
+                {#if use[qindex].c3 != ""}
+                    <div
+                        id="c3"
+                        class="cbase"
+                        on:click={() => {
+                            handleAnswer("c3t");
+                        }}
+                    >
+                        <p>{use[qindex].c3}</p>
+                    </div>
+                {/if}
+                {#if use[qindex].c4 != ""}
+                    <div
+                        id="c4"
+                        class="cbase"
+                        on:click={() => {
+                            handleAnswer("c4t");
+                        }}
+                    >
+                        <p>{use[qindex].c4}</p>
+                    </div>
+                {/if}
+            </div>
+        </div>
+    </div>
+{/if}
 
 <style>
     @font-face {
@@ -206,10 +282,15 @@
         color: #ffffff;
     }
 
-    h1 {
+    h1,
+    h4 {
         font-family: "Supermarket";
-        font-size: 4em;
+        font-size: 3.7em;
         color: #ffffff;
+    }
+
+    h4 {
+        font-size: 1.7em;
     }
 
     p {
@@ -242,9 +323,10 @@
     .qbase {
         background-color: #6f72dd;
         border-radius: 0.8em;
-        padding: 0em 2.2em 0.2em 2.2em;
+        padding: 0.1em 2.2em 0.3em 2.2em;
         margin-bottom: 2em;
         max-width: 85%;
+        text-align: center;
     }
 
     .xbase {
@@ -258,7 +340,7 @@
     .cbase {
         height: 20em;
         background-color: #6f72dd;
-        padding: 0em 2.2em 0.7em 2.2em;
+        padding: 0.5em 2.2em 0.7em 2.2em;
         border-radius: 0.4em;
         text-align: center;
         word-wrap: break-word;
@@ -267,5 +349,17 @@
     .cbase:hover {
         background-color: #6f73ddb7;
         cursor: pointer;
+    }
+
+    .pcard {
+        width: 30%;
+        margin-top: 0.7em;
+        border: none;
+        border-radius: 0.4rem;
+        background-color: #6f73ddb7;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 0.5em 1.5em 1em 1.5em;
     }
 </style>
