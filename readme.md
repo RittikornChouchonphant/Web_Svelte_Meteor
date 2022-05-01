@@ -8,7 +8,7 @@ Powered by Meteor and Svelte framework with MongoDB.
 
 - Auto generated quiz with modern design
 - User-friendly user interface
-- Quiz library intense choices!
+- Quiz library packed with intense choices!
 
 ## Features
 
@@ -20,5 +20,6 @@ Powered by Meteor and Svelte framework with MongoDB.
 
 Raskit uses a number of open source projects to work properly:
 
-- [MeteorJS] - kick-starter from full-stack newbies
+- [MeteorJS] - kick-starting framework, perfect for full-stack newbies
 - [Svelte] - lastest fastest framework making websites more interesting
+- [MongoDB] - Make sure your exam is secure!
